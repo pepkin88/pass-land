@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>Finebite Pass</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "brand-red": "#E60000",
+              "brand-green": "#34C759",
+              "brand-green-light": "rgba(52, 199, 89, 0.15)",
+              "brand-gray": "#828282",
+              "brand-gray-light": "#979797",
+            },
+            fontFamily: {
+              inter: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .hero-curve::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: white;
+        clip-path: ellipse(65% 100% at 50% 100%);
+      }
+    </style>
+  </head>
+  <body class="bg-white p-0 m-0 min-h-screen text-black">
+    <!-- Main Container -->
+    <div class="mx-auto w-full sm:max-w-[480px] bg-white relative pb-6">
+      <!-- Hero Section -->
+      <div class="h-[340px] overflow-hidden relative hero-curve">
+        <img
+          src="https://www.figma.com/api/mcp/asset/77d76ffe-099a-434f-9b00-8464a297cf5e"
+          alt="Fine dining experience"
+          class="w-full h-full object-cover object-[center_75%] block relative scale-110"
+        />
+      </div>
+
+      <!-- Main Headline -->
+      <div class="px-8 pt-0 text-center">
+        <h1
+          class="text-[26px] font-bold leading-[32px] tracking-[-0.52px] mb-0 text-black"
+          data-i18n="hero"
+        ></h1>
+        <p
+          class="text-base leading-[22px] tracking-[-0.32px] mt-4 mb-8 whitespace-pre-line text-black"
+          data-i18n="heroSubtext"
+        ></p>
+      </div>
+
+      <!-- Social Proof Badge 1 -->
+      <div class="flex justify-center mb-8">
+        <div id="socialBadge1"></div>
+      </div>
+
+      <!-- Primary CTA Button 1 -->
+      <div class="px-11 mb-4 max-w-[375px] mx-auto">
+        <div id="ctaButton1"></div>
+      </div>
+
+      <!-- Try Without Subscription Link 1 -->
+      <div class="text-center mb-6">
+        <div id="tryLink1"></div>
+      </div>
+
+      <!-- Divider -->
+      <div id="divider1"></div>
+
+      <!-- Warsaw Restaurant Gallery -->
+      <div class="px-8 mb-2 relative z-10">
+        <div class="flex justify-between items-center mb-4">
+          <div class="relative">
+            <h2
+              class="text-base font-bold tracking-[-0.32px] cursor-pointer active:opacity-70 transition-opacity text-black"
+              id="citySelector"
+            >
+              <span data-i18n="cityWarsaw"></span>
+              <span class="inline-block ml-1">
+                <svg class="inline w-2 h-1.5" viewBox="0 0 8 6" fill="none">
+                  <path d="M4 6L0.535898 0L7.4641 0L4 6Z" fill="black" />
+                </svg>
+              </span>
+            </h2>
+            <div
+              class="absolute top-full left-0 bg-white border border-[#e5e5e5] rounded shadow-[0_4px_12px_rgba(0,0,0,0.1)] mt-2 min-w-[200px] z-[1000] hidden"
+              id="cityDropdown"
+            >
+              <!-- Cities will be injected here -->
+            </div>
+          </div>
+          <span
+            class="text-brand-gray-light text-xs tracking-[-0.24px]"
+            data-i18n="placesCount"
+          ></span>
+        </div>
+
+        <!-- Restaurant Thumbnails -->
+        <div
+          id="restaurants"
+          class="flex gap-4 overflow-x-auto scrollbar-hide pb-4 -mx-8 px-8"
+        >
+          <!-- Restaurants will be injected here -->
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div id="divider2"></div>
+
+      <!-- Section 1: Access to 1000+ Restaurants -->
+      <div class="px-8 pt-4 mb-8 text-center">
+        <h2
+          class="text-[26px] font-bold leading-[32px] tracking-[-0.52px] mb-0 whitespace-pre-line text-black"
+          data-i18n="section1Title"
+        ></h2>
+        <p
+          class="text-base leading-[22px] tracking-[-0.32px] mb-6 mt-4 text-black"
+          data-i18n="section1Text"
+        ></p>
+        <div class="rounded-[4px] overflow-hidden">
+          <img
+            src="https://www.figma.com/api/mcp/asset/b3a23696-1e13-4621-89f4-538b3fa42bba"
+            alt="Delicious food"
+            class="w-full h-[180px] object-cover rounded-[4px]"
+          />
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div id="divider3"></div>
+
+      <!-- Section 2: How It Works -->
+      <div class="px-8 pt-4 mb-8 text-center">
+        <h2
+          class="text-[26px] font-bold leading-8 tracking-[-0.52px] mb-4 text-black"
+          data-i18n="section2Title"
+        ></h2>
+        <p
+          class="text-base leading-[22px] tracking-[-0.32px] mb-8 text-black"
+          data-i18n="section2Text"
+        ></p>
+
+        <!-- Features List -->
+        <div id="features" class="space-y-6 text-left">
+          <!-- Features will be injected here -->
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div id="divider4"></div>
+
+      <!-- Social Proof Badge 2 -->
+      <div class="flex justify-center pt-4 mb-2">
+        <div id="socialBadge2"></div>
+      </div>
+
+      <!-- Section 3: Value Proposition -->
+      <div class="px-8 pt-4 mb-8 text-center">
+        <h2
+          class="text-[26px] font-bold leading-8 tracking-[-0.52px] mb-4 whitespace-pre-line text-black"
+          data-i18n="section3Title"
+        ></h2>
+        <p
+          class="text-base leading-[22px] tracking-[-0.32px] mb-6 text-black"
+          data-i18n="section3Text"
+        ></p>
+
+        <!-- Food Images Gallery -->
+        <div class="mb-8">
+          <div class="overflow-x-auto overflow-y-visible scrollbar-hide -mx-8">
+            <div id="galleryImages" class="flex gap-4 px-8">
+              <!-- Gallery will be injected here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom CTA Button 2 -->
+      <div class="px-11 mb-4 max-w-[375px] mx-auto">
+        <div id="ctaButton2"></div>
+      </div>
+
+      <!-- Try Without Subscription Link 2 -->
+      <div class="text-center mb-2">
+        <div id="tryLink2"></div>
+      </div>
+    </div>
+
+    <!-- Logic -->
+    <script>
+      // Simple DOM helper (Point 2: Eliminate DOM cache)
+      const $ = (id) => document.getElementById(id);
+
+      // Data
+      const appData = {
+        cities: [
+          { id: "warsaw", key: "cityWarsaw" },
+          { id: "krakow", key: "cityCracow" },
+          { id: "gdansk", key: "cityGdansk" },
+          { id: "wroclaw", key: "cityWroclaw" },
+          { id: "poznan", key: "cityPoznan" },
+        ],
+        features: [
+          { titleKey: "feature1Title", textKey: "feature1Text" },
+          { titleKey: "feature2Title", textKey: "feature2Text" },
+          { titleKey: "feature3Title", textKey: "feature3Text" },
+          { titleKey: "feature4Title", textKey: "feature4Text" },
+        ],
+        restaurants: [
+          {
+            name: "Thai Thai",
+            image:
+              "https://www.figma.com/api/mcp/asset/9801ac32-f796-4b1e-b1df-531600a62dfa",
+          },
+          {
+            name: "Cały Gaweł",
+            image:
+              "https://www.figma.com/api/mcp/asset/e1cfa992-26af-4817-82ab-a9d73a510fb0",
+          },
+          {
+            name: "Monsun Gd...",
+            image:
+              "https://www.figma.com/api/mcp/asset/9801ac32-f796-4b1e-b1df-531600a62dfa",
+          },
+          {
+            name: "HAOS",
+            image:
+              "https://www.figma.com/api/mcp/asset/e1cfa992-26af-4817-82ab-a9d73a510fb0",
+          },
+        ],
+        avatars: [
+          { name: "A", bg: "4A90E2" },
+          { name: "B", bg: "F5A623" },
+          { name: "C", bg: "E94B3C" },
+        ],
+        galleryImages: [
+          {
+            url: "https://www.figma.com/api/mcp/asset/5005797b-64a2-4ea6-93e2-f0a5283ac031",
+            alt: "Exquisite dining",
+          },
+          {
+            url: "https://www.figma.com/api/mcp/asset/5005797b-64a2-4ea6-93e2-f0a5283ac031",
+            alt: "Exquisite dining",
+          },
+        ],
+      };
+
+      // Internationalization
+      const content = {
+        pl: {
+          title: "Finebite Pass - Odkrywaj restauracje bez limitów",
+          hero: "Odkrywaj bez limitów",
+          heroSubtext:
+            "Sprawdź 1000 restauracji ze zniżką\n50% podczas pierwszej wizyty.",
+          joinGuests: "Dołącz do 1,8 mln gości",
+          ctaPrimary: "Korzystaj za 24,99 zł mies.",
+          ctaTryWithout: "Wypróbuj bez abonamentu",
+          cityWarsaw: "Warszawa",
+          cityCracow: "Kraków",
+          cityGdansk: "Gdańsk",
+          cityWroclaw: "Wrocław",
+          cityPoznan: "Poznań",
+          placesCount: "256 miejsc",
+          section1Title: "Dostęp do 1000+ restauracji za pół ceny",
+          section1Text:
+            "Poznaj nowe miejsca i lokalne perełki. W tym aż 5 restauracji Michelin!",
+          section2Title: "Sprawdź jak to działa",
+          section2Text:
+            "Jedna prosta płatność w miesiącu i korzystasz z Finebite ile chcesz!",
+          feature1Title: "Nielimitowane rezerwacje",
+          feature1Text:
+            "Rezerwujesz ile chcesz każdego miesiąca! Maksymalnie 3 nadchodzące rezerwacje.",
+          feature2Title: "Zniżka 50% dla aż 4 osób",
+          feature2Text:
+            "Zaproś nawet 3 dodatkowe osoby na rezerwację i wszyscy otrzymacie zniżkę.",
+          feature3Title: "Wygodne anulowanie",
+          feature3Text:
+            "Abonament możesz anulować bez problemu z końcem kolejnego miesiąca.",
+          feature4Title: "Dostęp w całej Polsce",
+          feature4Text:
+            "Ponad 1000 restauracji w 10 miastach i każdego dnia nowe miejsca!",
+          section3Title: "Koszt zwróci się już\nna pierwszej wizycie",
+          section3Text:
+            "Każda rezerwacja gwarantuje zniżkę 50% na jedzenie. Dołącz już dzisiaj!",
+        },
+        en: {
+          title: "Finebite Pass - Discover restaurants without limits",
+          hero: "Discover without limits",
+          heroSubtext:
+            "Try 1000 restaurants with a\n50% discount on your first visit.",
+          joinGuests: "Join 1.8 million guests",
+          ctaPrimary: "Use for 24.99 PLN/month",
+          ctaTryWithout: "Try without subscription",
+          cityWarsaw: "Warsaw",
+          cityCracow: "Kraków",
+          cityGdansk: "Gdańsk",
+          cityWroclaw: "Wrocław",
+          cityPoznan: "Poznań",
+          placesCount: "256 places",
+          section1Title: "Access to 1000+ restaurants for half price",
+          section1Text:
+            "Discover new places and local gems. Including 5 Michelin restaurants!",
+          section2Title: "See how it works",
+          section2Text:
+            "One simple monthly payment and use Finebite as much as you want!",
+          feature1Title: "Unlimited reservations",
+          feature1Text:
+            "Book as much as you want each month! Maximum 3 upcoming reservations.",
+          feature2Title: "50% off for up to 4 people",
+          feature2Text:
+            "Invite 3 additional guests to your reservation and everyone gets the discount.",
+          feature3Title: "Easy cancellation",
+          feature3Text:
+            "You can cancel the subscription easily at the end of the next month.",
+          feature4Title: "Access across Poland",
+          feature4Text:
+            "Over 1000 restaurants in 10 cities with new places every day!",
+          section3Title: "The cost pays for itself\non your first visit",
+          section3Text:
+            "Every reservation guarantees a 50% discount on food. Join today!",
+        },
+      };
+
+      let currentLang = "pl";
+
+      // Reusable Components (Point 5: Multi-line template literals)
+      const components = {
+        ctaButton: () => `
+          <button
+            class="w-full bg-brand-red text-white rounded-[4px] h-[50px] text-[17px] font-medium tracking-[-0.34px] shadow-sm active:opacity-80 transition-opacity"
+            data-i18n="ctaPrimary"
+          >${content[currentLang].ctaPrimary}</button>
+        `,
+
+        tryWithoutLink: () => `
+          <a
+            href="#"
+            class="text-brand-gray text-xs underline decoration-1 underline-offset-2 active:opacity-60 transition-opacity"
+            data-i18n="ctaTryWithout"
+          >${content[currentLang].ctaTryWithout}</a>
+        `,
+
+        socialBadge: () => `
+          <div class="bg-brand-green-light rounded-full pl-3 pr-4 py-2 flex items-center gap-2.5">
+            <div class="flex -space-x-3">${renderHelpers.avatars()}</div>
+            <span class="text-brand-green text-xs font-semibold" data-i18n="joinGuests">
+              ${content[currentLang].joinGuests}
+            </span>
+          </div>
+        `,
+
+        divider: () => `<div class="w-full h-px bg-gray-200 mb-4"></div>`,
+      };
+
+      // Render Helpers (Point 5: Multi-line template literals)
+      const renderHelpers = {
+        avatars: () =>
+          appData.avatars
+            .map(
+              (a) => `
+                <img
+                  src="https://ui-avatars.com/api/?name=${a.name}&background=${a.bg}&color=fff&size=68"
+                  alt="Guest"
+                  class="w-[34px] h-[34px] rounded-full border-2 border-white"
+                />
+              `
+            )
+            .join(""),
+
+        feature: (f) => `
+          <div class="flex gap-3">
+            <div class="flex-none mt-0.5">
+              <div class="w-6 h-6 rounded-full bg-brand-green flex items-center justify-center">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-semibold tracking-[0.144px] mb-1" data-i18n="${
+                f.titleKey
+              }">
+                ${content[currentLang][f.titleKey]}
+              </h3>
+              <p class="text-sm text-brand-gray leading-5 tracking-[-0.28px]" data-i18n="${
+                f.textKey
+              }">
+                ${content[currentLang][f.textKey]}
+              </p>
+            </div>
+          </div>
+        `,
+
+        restaurant: (r) => `
+          <div class="flex-none">
+            <img
+              src="${r.image}"
+              alt="${r.name}"
+              class="w-[80px] h-[80px] object-cover rounded mb-2"
+            />
+            <p class="text-xs font-bold tracking-[-0.24px]">${r.name}</p>
+          </div>
+        `,
+
+        city: (c) => `
+          <div
+            class="px-4 py-3 cursor-pointer transition-colors text-black hover:bg-[#f5f5f5] active:bg-[#e5e5e5] first:rounded-t last:rounded-b city-option"
+            data-city="${c.id}"
+            data-i18n-city="${c.key}"
+          >${content[currentLang][c.key]}</div>
+        `,
+
+        gallery: (img) => `
+          <div class="flex-none rounded-[4px] overflow-hidden w-[calc(100vw-80px)] max-w-[295px]">
+            <img
+              src="${img.url}"
+              alt="${img.alt}"
+              class="w-full h-[470px] object-cover object-center"
+            />
+          </div>
+        `,
+      };
+
+      function renderComponents() {
+        ["ctaButton1", "ctaButton2"].forEach(
+          (id) => ($(id).innerHTML = components.ctaButton())
+        );
+        ["tryLink1", "tryLink2"].forEach(
+          (id) => ($(id).innerHTML = components.tryWithoutLink())
+        );
+        ["socialBadge1", "socialBadge2"].forEach(
+          (id) => ($(id).innerHTML = components.socialBadge())
+        );
+        ["divider1", "divider2", "divider3", "divider4"].forEach(
+          (id) => ($(id).innerHTML = components.divider())
+        );
+      }
+
+      function renderLists() {
+        $("features").innerHTML = appData.features
+          .map(renderHelpers.feature)
+          .join("");
+        $("restaurants").innerHTML = appData.restaurants
+          .map(renderHelpers.restaurant)
+          .join("");
+        $("cityDropdown").innerHTML = appData.cities
+          .map(renderHelpers.city)
+          .join("");
+        $("galleryImages").innerHTML = appData.galleryImages
+          .map(renderHelpers.gallery)
+          .join("");
+      }
+
+      function setupCityDropdown() {
+        const citySelector = $("citySelector");
+        const cityDropdown = $("cityDropdown");
+        const cityNameSpan = citySelector.querySelector(
+          'span[data-i18n^="city"]'
+        );
+
+        citySelector.addEventListener("click", (e) => {
+          e.stopPropagation();
+          cityDropdown.classList.toggle("hidden");
+        });
+
+        document.addEventListener("click", () =>
+          cityDropdown.classList.add("hidden")
+        );
+
+        cityDropdown.addEventListener("click", (e) => {
+          const option = e.target.closest(".city-option");
+          if (option) {
+            cityNameSpan.textContent = option.textContent.trim();
+            cityDropdown.classList.add("hidden");
+          }
+        });
+      }
+
+      function setLanguage(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        document.title = content[lang]?.title || content.en.title;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (content[lang]?.[key]) el.textContent = content[lang][key];
+        });
+        renderComponents();
+        renderLists();
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const lang = navigator.language?.toLowerCase().startsWith("pl")
+          ? "pl"
+          : "en";
+        setLanguage(lang);
+        setupCityDropdown();
+      });
+    </script>
+  </body>
+</html>
